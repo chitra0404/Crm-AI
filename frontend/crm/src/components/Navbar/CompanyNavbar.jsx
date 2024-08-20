@@ -1,6 +1,15 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function CompanyNavbar() {
+    const navigate=useNavigate();
+    const handleLogout=()=>{
+        localStorage.removeItem("tokenAuth");
+       
+     navigate("/");
+       
+       
+      }
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
@@ -19,17 +28,17 @@ function CompanyNavbar() {
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item">
-                            <a className="nav-link " href="/product">product</a>
+                            <a className="nav-link " href="/company/product">product</a>
                         </li>
                     </ul>
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item">
-                            <a className="nav-link " href="/plan">plan</a>
+                            <a className="nav-link " href="/company/plan">plan</a>
                         </li>
                     </ul>
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link btn btn-primary me-2 custom-button" href="">Logout</a>
+                            <a className="nav-link btn btn-primary me-2 custom-button" onClick={handleLogout}>Logout</a>
                         </li>
                       
                     </ul>
