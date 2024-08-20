@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CompanyNavbar() {
+function UserNavbar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
@@ -19,12 +19,12 @@ function CompanyNavbar() {
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item">
-                            <a className="nav-link " href="/product">product</a>
+                            <a className="nav-link " href="/search">search</a>
                         </li>
                     </ul>
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item">
-                            <a className="nav-link " href="/plan">plan</a>
+                            
                         </li>
                     </ul>
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -35,8 +35,8 @@ function CompanyNavbar() {
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> 
     )
 }
 
-export default CompanyNavbar
+export default UserNavbar

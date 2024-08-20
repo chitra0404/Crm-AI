@@ -17,12 +17,7 @@ const businessSchema=mongoose.Schema({
     location:{
         type:String,
     },
-    plan:{
-        type:String,
-        enum: ['Basic', 'Medium', 'Advanced'], 
-        required: true 
-
-    },
+   
     contactInfo:{
         type:Number,
     },

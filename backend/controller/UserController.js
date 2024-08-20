@@ -58,3 +58,23 @@ module.exports.getUser=async(req,res)=>{
         res.status(500).send({message:err})
     }
 }
+module.exports.updatePlan = async (req, res) => {
+    const { plan } = req.body;
+    if (!plan) {
+      return res.status(400).json({ message: 'Plan is required' });
+    }
+  
+    try {
+      // Ensure req.user is properly populated
+      if (!req.user || !req.user._id) {
+        return res.status(401).json({ message: 'User not authenticated' });
+      }
+  
+      await User.updateOne({ _id: req.user._id }, { $set: { plan: plan } });
+      res.status(200).json({ message: 'Plan updated' });
+    } catch (error) {
+      console.error('Error updating plan:', error);
+      res.status(500).json({ message: 'Error updating plan' });
+    }
+  };
+  

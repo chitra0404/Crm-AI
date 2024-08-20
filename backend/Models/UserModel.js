@@ -18,6 +18,12 @@ const UserSchema=mongoose.Schema({
         type:String,
         enum:['company','user'],
         default:'user'
+    },
+    plan:{
+        type:String,
+        enum: ['Basic', 'Medium', 'Advanced'], 
+       
+
     }
 })
 

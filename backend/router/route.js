@@ -1,8 +1,9 @@
 
 
 const express=require('express');
-const { updatePlan,addBusiness,getProspects } = require('../controller/BusinessController');
-const { getUser,registeruser,LoginUser } = require('../controller/UserController');
+const { addBusiness,getProspects, searchProspect, updateProspectStatus } = require('../controller/BusinessController');
+const { getUser,registeruser,LoginUser, updatePlan } = require('../controller/UserController');
+const auth = require('../Middleware/auth');
 
 const router=express.Router();
 
@@ -14,8 +15,10 @@ router.post('/login',LoginUser);
 
 
 router.post('/business',addBusiness)
-router.post('/plan',updatePlan);
+router.post('/plan',auth,updatePlan);
 router.get('/prospect',getProspects);
+router.put('/:Id/status', updateProspectStatus);
+router.get('/search',searchProspect)
 
 
 

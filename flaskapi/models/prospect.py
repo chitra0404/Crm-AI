@@ -3,10 +3,12 @@ from bson.objectid import ObjectId
 
 class Prospect:
     @staticmethod
-    def add_prospect(business_id, prospect_name, contact_info):
+    def add_prospect(business_id, prospect_name,location,sectortype, contact_info):
         prospect = {
             "business_id": ObjectId(business_id),
             "prospect_name": prospect_name,
+            "location":location,
+            "sectortype":sectortype,
             "contact_info": contact_info
         }
         result = mongo.db.prospects.insert_one(prospect)

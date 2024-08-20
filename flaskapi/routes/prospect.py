@@ -18,8 +18,8 @@ def predict():
 
     # Replace with actual prediction logic
     prospects = [
-        {"prospectName": "Company A", "contactInfo": 9999999999},
-        {"prospectName": "Company B", "contactInfo": 9090909090}
+        {"prospectName": "Company A", "location":"chennai","sectortype":"IT","contactInfo": 9999999999},
+        {"prospectName": "Company B","location":"pondy","sectortype":"network", "contactInfo": 9090909090}
     ]
 
     return jsonify(prospects)

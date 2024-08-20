@@ -1,13 +1,42 @@
 const Business=require('../Models/BusinessModel');
 const Prospect=require('../Models/ProspectModel');
+
 const axios=require('axios')
 
+module.exports.searchProspect=async(req,res)=>{
+    const { location, sectortype } = req.query;
 
-module.exports.updatePlan=async(req,res)=>{
-    const {plan}=req.body;
-    await Business.updateOne({ userId: req.user.id }, { $set: { plan: plan } });
-res.status(200).json({message:"plan updated"})
+    try {
+        const query = {};
+        if (location) query.location = location;
+        if (sectortype) query.sectortype = sectortype;
+
+        const prospects = await Prospect.find(query).populate('businessId'); 
+        res.json(prospects);
+    } catch (error) {
+        console.error('Error fetching prospects:', error);
+        res.status(500).json({ message: 'Error fetching prospects' });
+    }
 }
+
+
+module.exports.updateProspectStatus = async (req, res) => {
+  const { Id } = req.params;
+  const { status } = req.body;
+
+  try {
+    const prospect = await Prospect.findByIdAndUpdate(prospectId, { status }, { new: true });
+    if (!prospect) {
+      return res.status(404).json({ message: 'Prospect not found' });
+    }
+    res.status(200).json(prospect);
+  } catch (error) {
+    console.error('Error updating prospect status:', error);
+    res.status(500).json({ message: 'Error updating prospect status' });
+  }
+};
+
+
 
 module.exports.getProspects=async(req,res)=>{
     const businesses = await Business.find({ userId: req.user._id });

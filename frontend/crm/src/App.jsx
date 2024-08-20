@@ -8,6 +8,9 @@ import Login from './components/Login'
 import Home from './components/Home/Home'
 import Product from './components/Product'
 import CompanyDashboard from './components/company/companyDashboard'
+import Plan from './components/company/Plan'
+import Search from './components/User/Search'
+import UserDashboard from './components/User/UserDashboard'
 
 function App() {
 
@@ -19,6 +22,9 @@ function App() {
     <Route path="/login" element={<Login/>} />
     <Route path="/product" element={<Product/>} />
     <Route path="/company" element={<CompanyDashboard/>}/>
+    <Route path='/plan' element={<Plan/>}/>
+    <Route path="/search" element={<Search/>}/>
+    <Route path="/user" element={<UserDashboard/>}/>
     
 
     </Routes>
