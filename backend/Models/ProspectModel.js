@@ -27,3 +27,5 @@ const prospectSchema=mongoose.Schema({
 })
 
 
+const Prospect=mongoose.model('Prospect',prospectSchema);
+module.exports=Prospect;

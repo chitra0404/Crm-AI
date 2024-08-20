@@ -28,8 +28,8 @@ const businessSchema=mongoose.Schema({
     },
    businessemail: { 
         type: String,
-         required: true,
-          unique: true },
+        
+          },
 })
 
 const Business=mongoose.model('Business',businessSchema);

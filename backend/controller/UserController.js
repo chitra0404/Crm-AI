@@ -4,7 +4,7 @@ const bcrypt=require('bcryptjs');
 
 
 module.exports.registeruser=async(req,res)=>{
-    try{
+    // try{
     const{name,email,password,role}=req.body;
     const previousemail=await User.findOne({email:req.body.email})
     if(previousemail){
@@ -12,16 +12,16 @@ module.exports.registeruser=async(req,res)=>{
 return
     }
     const hashpassword=await bcrypt.hash(password,10)
-    const token=jwt.sign({email,role,userId:_id},process.env.JWT_SECRET)
-    const user=new User({name,email,password:hashpassword,token})
+    const token=jwt.sign({email,role},process.env.JWT_SECRET)
+    const user=new User({name,email,password:hashpassword,role})
 
     await user.save();
     res.status(200) .header("auth-token").json({token:token});
-}
-catch(err){
-    return res.status(500).json({ Message: "Internal server error" })
+// }
+// catch(err){
+//     return res.status(500).json({ Message: "Internal server error" })
 
-}
+// }
 }
 
 module.exports.LoginUser=async(req,res)=>{

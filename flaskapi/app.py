@@ -1,5 +1,3 @@
-# app.py
-
 from flask import Flask
 from db import mongo
 from routes.prospect import prospect_bp

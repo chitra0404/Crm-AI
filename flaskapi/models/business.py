@@ -1,7 +1,11 @@
-from bson.objectid import ObjectId
+from db import mongo
 
 class Business:
     @staticmethod
     def get_business_by_id(business_id):
-        from app import mongo  # Import mongo here to avoid circular import
-        return mongo.db.business.find_one({"_id": ObjectId(business_id)})
+        # Ensure to use the correct collection name
+        business = mongo.db.businesses.find_one({"_id": business_id})
+        if business:
+            # Convert ObjectId to string if needed
+            business["_id"] = str(business["_id"])
+        return business
